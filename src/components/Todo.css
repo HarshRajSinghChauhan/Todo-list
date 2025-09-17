@@ -11,8 +11,38 @@
     background-color: green;
 }
 
+
 .input{
     align-items: stretch;
     display: flex;
     justify-content: center;
+}
+
+/* li{
+    border: 2px solid white;
+    margin: 0.5rem;
+    padding: 1rem;
+} */
+
+li{
+  border: 2px solid white;
+  margin: 0.5rem;
+  padding: 0.8rem ;
+  display: flex;
+  justify-content: space-between; /* This ensures equal space between task and button */
+  align-items: center; /* Align items vertically in the center */
+  
+}
+
+li button {
+  margin-left: auto; /* Ensures the button is pushed to the far right */
+}
+
+li:hover{
+    background-color: white;
+    color: black;
+}
+
+#dltBtn{
+    background-color: red;
 }
