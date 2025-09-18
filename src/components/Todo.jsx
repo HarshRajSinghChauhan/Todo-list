@@ -8,9 +8,9 @@ export default function Todo() {
 
     let addTask = () => {
         if (newTodo.trim() === "") {
-        alert("Please enter a task!");
-        return;
-    }
+            alert("Please enter a task!");
+            return;
+        }
         setTodos([...todos, { task: newTodo, id: uuidv4(), isDone: false }]);
         setNewTodo("")
     }
@@ -31,24 +31,42 @@ export default function Todo() {
                         ...todo,
                         isDone: true,
                     }
-                }else{
+                } else {
                     return todo;
                 }
             })
         ))
     }
 
-    let markAllDone = () =>{
-        setTodos((todos) =>(
-            todos.map((todo) =>{
-                return{
+    let markAllDone = () => {
+        setTodos((todos) => (
+            todos.map((todo) => {
+                return {
                     ...todo,
-                    isDone : true,
+                    isDone: true,
                 }
             })
         ))
     }
 
+    let editTask = (id) => {
+        let edit = prompt("Edit Task: ")
+
+        if (edit) {
+            setTodos((todos) => (
+                todos.map((todo) => {
+                    if (todo.id == id) {
+                        return {
+                            ...todo,
+                            task: edit,
+                        }
+                    } else {
+                        return todo;
+                    }
+                })
+            ))
+        }
+    }
     return (
         <div className="container">
             <h3>TODO LIST</h3>
@@ -60,9 +78,9 @@ export default function Todo() {
                 {
                     todos.map((todo) => (
                         <li key={todo.id}>
-                            <span style={ todo.isDone ? {textDecoration : "Line-through"} : {}}>{todo.task}</span>
+                            <span style={todo.isDone ? { textDecoration: "Line-through" } : {}}>{todo.task}</span>
                             &nbsp; &nbsp; &nbsp; &nbsp;
-                            <button id="editBtn">Edit</button>
+                            <button id="editBtn" onClick={() => editTask(todo.id)}>Edit</button>
                             &nbsp; &nbsp; &nbsp; &nbsp;
                             <button id='markBtn' onClick={() => markDone(todo.id)}>Mark Done</button>
                             &nbsp; &nbsp; &nbsp; &nbsp;
@@ -71,7 +89,7 @@ export default function Todo() {
                     ))
                 }
             </ul>
-            <button id = "markAllBtn" onClick={markAllDone}>Mark all as done</button>
+            <button id="markAllBtn" onClick={markAllDone}>Mark all as done</button>
         </div>
     )
 }
