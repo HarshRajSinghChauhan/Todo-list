@@ -38,6 +38,16 @@ export default function Todo() {
         ))
     }
 
+    let markAllDone = () =>{
+        setTodos((todos) =>(
+            todos.map((todo) =>{
+                return{
+                    ...todo,
+                    isDone : true,
+                }
+            })
+        ))
+    }
 
     return (
         <div className="container">
@@ -61,6 +71,7 @@ export default function Todo() {
                     ))
                 }
             </ul>
+            <button id = "markAllBtn" onClick={markAllDone}>Mark all as done</button>
         </div>
     )
 }

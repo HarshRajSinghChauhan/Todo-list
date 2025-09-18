@@ -47,6 +47,6 @@ li:hover{
     background-color: red;
 }
 
-#markBtn{
+#markBtn, #markAllBtn{
   background-color: aquamarine;
 }
